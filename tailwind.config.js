@@ -1,7 +1,21 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
-  content: [],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
-    extend: {},
+    screens: {
+      'xs': '320px',
+      ...defaultTheme.screens,
+    },
+    extend: {
+      backgroundImage: {
+        'bgImage': "url('/public/background.jpg')"
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }

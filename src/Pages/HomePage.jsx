@@ -1,22 +1,20 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { actions } from '../store/userSlice'
+import { userActions } from '../redux/userSlice'
 
 import Logo from '../Assets/logo.svg'
-import RedirectHook from '../hooks/RedirectHook';
 
 
 const Home = () => {
-    // RedirectHook();
 
     let navigate = useNavigate();
     let dispatch = useDispatch();
 
     const status = useSelector((state) => state.auth.isLoggedIn);
     useEffect(() => {
-        status ? console.log("a") : console.log("b");
-    }, [])
+        status ? navigate("/home") : navigate("/");
+    },[status])
 
     function toSignin() {
         navigate("/signin");
@@ -24,7 +22,7 @@ const Home = () => {
 
     function onSubmit(e) {
         e.preventDefault();
-        navigate("/signup");
+        navigate("/signup/regform");
     }
     return (
         <div className="bg-bgImage bg-cover">
@@ -44,7 +42,7 @@ const Home = () => {
                     </div>
 
                     <form onSubmit={onSubmit} className="flex flex-row flex-wrap justify-center items-center w-screen mb-36">
-                        <input required type="email" onChange={(e) => dispatch(actions.setTempEmail(e.target.value))} className="from-input py-4 w-2/5 xs:w-full sm:w-2/5 xs:mx-5 sm:mx-0" placeholder="Email Address" />
+                        <input required type="email" onChange={(e) => dispatch(userActions.setTempEmail(e.target.value))} className="from-input py-4 w-2/5 xs:w-full sm:w-2/5 xs:mx-5 sm:mx-0" placeholder="Email Address" />
                         <button className="bg-[#e50914] text-white px-4 xs:py-2 sm:py-4 xs:my-5 sm:my-0 xs:mx-auto sm:mx-0">Get Started &gt;</button>
                     </form>
                 </div>

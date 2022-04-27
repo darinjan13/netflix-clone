@@ -40,10 +40,10 @@ const Signin = () => {
                     <form onSubmit={onSubmit} className="flex flex-col">
                         <h1 className="text-white text-4xl font-bold mb-5">Sign In</h1>
                         <div className={`${error ? 'block' : 'hidden'} text-white text-sm bg-[#e87c03] rounded-lg py-2 px-3 mb-4`} role="alert">
-                            Sorry, we can't find an account with this email address. Please try again or <a className="underline" href="/signup/regform">create a new account</a>.
+                            Sorry, we can't find an account with this email address. Please try again or <a className="underline" href="/signup">create a new account</a>.
                         </div>
-                        <input className="text-white rounded-lg bg-[#333] mb-5" value={signInEmail} onChange={(e) => setSignInEmail(e.target.value)} type="email" placeholder="Email" required />
-                        <input className="text-white rounded-lg bg-[#333] border-0 mb-10" value={signInPassword} onChange={(e) => setSignInPassword(e.target.value)} type="password" placeholder="Password" required />
+                        <input className="text-white rounded-lg bg-[#333] mb-5" value={signInEmail} onChange={(e) => setSignInEmail(e.target.value)} type="text" placeholder="Email" />
+                        <input className="text-white rounded-lg bg-[#333] border-0 mb-10" value={signInPassword} onChange={(e) => setSignInPassword(e.target.value)} type="password" placeholder="Password" />
                         <button className="text-white text-center font-bold bg-red-600 rounded-lg p-4">Sign In</button>
                     </form>
                 </div>

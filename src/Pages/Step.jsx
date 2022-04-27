@@ -6,7 +6,7 @@ import Devices from '../Assets/Devices.png'
 import RedirectHook from '../hooks/RedirectHook';
 
 const Signup = () => {
-    // RedirectHook();
+    RedirectHook('signup');
     let navigate = useNavigate();
     return ( 
         <>

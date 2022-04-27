@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     tempEmail: '',
     email: '',
-    password: ''
+    password: '',
 }
 
 const userSlice = createSlice({
@@ -22,6 +22,6 @@ const userSlice = createSlice({
     }
 });
 
-export const actions = userSlice.actions;
+export const userActions = userSlice.actions;
 
 export default userSlice;

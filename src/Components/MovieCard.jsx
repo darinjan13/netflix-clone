@@ -1,40 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useEffect } from "react"
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, setSelectedMovie, setWatched, setModal }) => {
     const image = "https://image.tmdb.org/t/p/w500"
 
-    const [trailers, setTrailers] = useState([])
-    const [trailer, setTrailer] = useState(null);
-
-    const fetchTrailers = async () => {
-        const { data: { results } } = await axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=5615fc35b6eb4fd0f518a7751cc0d780&language=en-US`)
-        setTrailers(results)
-    }
-
-    useEffect(() => {
-        fetchTrailers()
-        setTrailer(trailers.find((trailer) => trailer.type === "Trailer"))
-    }, [trailers]);
-    // const trailer = trailers.find((trailer) => trailer.name === "Final Trailer");
-    let hidden = true;
-    const kl = () => {
-        // axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=5615fc35b6eb4fd0f518a7751cc0d780&language=en-US`)
-        // .then(res => {
-        //     setTrailers(res.data)
-        //     console.log(trailers)
-        // })
-
-        hidden = false;
-        console.log(trailer)
+    const onClickImage = () => {
+        setSelectedMovie(movie)
+        setModal(true)
     }
     return (
         <>
-            <div className="text-center flex flex-row flex-wrap shrink-0 h-full scroll-smooth">
-                <div className="flex flex-col h-full scroll-smooth">
-                    <img onClick={kl} className="h-full w-full" src={`${image}${movie.poster_path}`} alt="" />
-                    {/* {movie.title} */}
-                </div>
+            <div className="flex flex-col xs:w-[46%] lg:w-52 hover:scale-110 hover:bg-black hover:text-white hover:rounded-md p-1 ">
+                <img onClick={onClickImage} src={`${process.env.REACT_APP_IMAGE_URL}${movie.poster_path}`} alt="" />
+                <h1 className="text-center">{movie.media_type === "movie" ? movie.title : movie.name}</h1>
+                
             </div>
         </>
     );

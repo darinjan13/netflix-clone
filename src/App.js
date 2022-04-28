@@ -14,7 +14,9 @@ function App() {
           <Route exact path="/" element={ <HomePage /> } />
           <Route exact path="/signup/regform" element={ <Regform />} />
           <Route exact path="/signin" element={ <Signin /> } />
-          <Route exact path="/home" element={ <Home /> } />
+          <Route exact path="/home" element={ <Home /> } >
+            
+          </Route>
           <Route path="*" element={ <NotFound /> } />
         </Routes>
   );

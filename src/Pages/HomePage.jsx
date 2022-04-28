@@ -25,7 +25,7 @@ const Home = () => {
         navigate("/signup/regform");
     }
     return (
-        <div className="bg-bgImage bg-cover">
+        <div className="bg-bgImage bg-cover bg-center">
             <div className="bg-gradient-to-b from-[#000000]/95 via-[#000000]/30 to-[#000000]/95">
                 <nav className="flex flex-wrap flex-row justify-between">
                     <img className="h-10 xs:h-5 sm:h-10 my-6 mx-16 xs:mx-5 sm:mx-16" src={Logo} alt="Netflix" />

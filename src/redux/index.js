@@ -18,6 +18,7 @@ const reducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
+        // eslint-disable-next-line
 export default () => {
     const store = createStore(persistedReducer);
     const persistor = persistStore(store)

@@ -14,6 +14,7 @@ const Home = () => {
     const status = useSelector((state) => state.auth.isLoggedIn);
     useEffect(() => {
         status ? navigate("/home") : navigate("/");
+        // eslint-disable-next-line
     },[status])
 
     function toSignin() {

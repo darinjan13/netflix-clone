@@ -1,7 +1,5 @@
-import { useEffect } from "react"
-
-const MovieCard = ({ movie, setSelectedMovie, setWatched, setModal }) => {
-    const image = "https://image.tmdb.org/t/p/w500"
+const MovieCard = ({ movie, setSelectedMovie, setModal }) => {
+    // const image = "https://image.tmdb.org/t/p/w500"
 
     const onClickImage = () => {
         setSelectedMovie(movie)

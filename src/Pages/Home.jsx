@@ -21,7 +21,7 @@ const Home = () => {
 
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState({});
-    const [watched, setWatched] = useState([]);
+    // const [watched, setWatched] = useState([]);
 
     let API_URL = "https://api.themoviedb.org/3/trending/";
 
@@ -32,11 +32,12 @@ const Home = () => {
 
     useEffect(() => {
         fetchMovies()
+        // eslint-disable-next-line
     }, []);
 
     const renderMovies = () => (
         movies.map((movie) => {
-            return <MovieCard key={movie.id} movie={movie} setSelectedMovie={setSelectedMovie} setWatched={setWatched} modal={modal} setModal={setModal} />;
+            return <MovieCard key={movie.id} movie={movie} setSelectedMovie={setSelectedMovie} modal={modal} setModal={setModal} />;
         })
     )
 

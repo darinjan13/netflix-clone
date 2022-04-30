@@ -6,14 +6,14 @@ import { userActions } from '../redux/userSlice'
 import Logo from '../Assets/logo.svg'
 
 
-const Home = () => {
+const HomePage = () => {
 
     let navigate = useNavigate();
     let dispatch = useDispatch();
 
     const status = useSelector((state) => state.auth.isLoggedIn);
     useEffect(() => {
-        status ? navigate("/home") : navigate("/");
+        status ? navigate("/trending") : navigate("/");
         // eslint-disable-next-line
     },[status])
 
@@ -51,4 +51,4 @@ const Home = () => {
         </div>
     );
 }
-export default Home;
+export default HomePage;

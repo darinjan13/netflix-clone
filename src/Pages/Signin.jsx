@@ -23,7 +23,7 @@ const Signin = () => {
         e.preventDefault();
         if (email === signInEmail && password === signInPassword) {
             dispatch(authActions.setLogin(true));
-            navigate("/home");
+            navigate("/trending");
         } else {
             setError(true);
         }

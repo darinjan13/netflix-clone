@@ -7,7 +7,7 @@ const RedirectHook = (location) => {
     const status = useSelector((state) => state.auth.isLoggedIn);
 
     useEffect(() => {
-        status ? navigate("/home") : navigate(`/${location}`);
+        status ? navigate("/trending") : navigate(`/${location}`);
         // eslint-disable-next-line
     }, [status])
 }

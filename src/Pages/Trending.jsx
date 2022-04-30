@@ -1,17 +1,17 @@
 // import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { userActions } from "../redux/userSlice"
 import { authActions } from "../redux/authSlice"
-import RedirectHook from "../hooks/RedirectHook";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
+// import YouTube, { YouTubeProps } from 'react-youtube'
 
 import MovieCard from "../Components/MovieCard"
-import { useState } from "react";
 import Modal from "../Components/Modal";
+import HomeNavbar from "../Components/HomeNavbar"
 
-const Home = () => {
-    RedirectHook('');
+const Trending = () => {
 
     // const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -21,37 +21,40 @@ const Home = () => {
 
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState({});
-    // const [watched, setWatched] = useState([]);
-
-    let API_URL = "https://api.themoviedb.org/3/trending/";
+    const [watched, setWatched] = useState([]);
 
     const fetchMovies = async () => {
-        const { data: { results } } = await axios.get(`${API_URL}all/day?api_key=${process.env.REACT_APP_API_KEY}`)
-        setMovies(results);
+        const { data: { results } } = await axios.get(`${process.env.REACT_APP_API_URL}/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
+        setMovies(results)
     }
-
     useEffect(() => {
         fetchMovies()
         // eslint-disable-next-line
-    }, []);
+    }, [movies]);
 
-    const renderMovies = () => (
-        movies.map((movie) => {
-            return <MovieCard key={movie.id} movie={movie} setSelectedMovie={setSelectedMovie} modal={modal} setModal={setModal} />;
-        })
-    )
+    const addToWatched = (movie) => {
+        const newWatched = [...watched, movie]
+        // console.log(movie)
+        setWatched(newWatched)
+    }
 
+    // const renderMovies = () => (
+    //     movies.map((movie, index) => {
+    //         return <MovieCard key={index} movie={movie} arr={arr} setSelectedMovie={setSelectedMovie} setWatched={setWatched} modal={modal} setModal={setModal} />;
+    //     })
+    // )
     function logout() {
         dispatch(userActions.setEmail(''));
         dispatch(userActions.setPassword(''));
         dispatch(authActions.setLogin(false));
     }
     function asD() {
-        setModal(true)
-        console.log(modal)
+        console.log(watched)
     }
+
     return (
         <>
+            <HomeNavbar />
             <button onClick={logout} >Logout</button>
             <button onClick={asD} >ASD</button>
             <input type="text" onChange={e => setSearch(e.target.value)} />
@@ -61,7 +64,7 @@ const Home = () => {
                 <h1>Trending</h1>
                 <div className="flex flex-wrap justify-around">
                     {/* <div className="flex flex-row flex-wrap shrink-0 h-full w-full"> */}
-                        {renderMovies()}
+                    <MovieCard movies={movies} setSelectedMovie={setSelectedMovie} addToWatched={addToWatched} modal={modal} setModal={setModal} />
                     {/* </div> */}
                 </div>
             </div>
@@ -69,4 +72,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default Trending;

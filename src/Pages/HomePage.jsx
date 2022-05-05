@@ -16,7 +16,6 @@ const HomePage = () => {
     const [email, setEmail] = useState();
     const [loading, setLoading] = useState(false);
     const [buttonLoading, setButtonLoading] = useState(false);
-    const [buttonDisable, setButtonDisable] = useState(false);
 
     useEffect(() => {
         document.title = "Home"
@@ -68,7 +67,7 @@ const HomePage = () => {
 
                                 <form onSubmit={onSubmit} className="flex flex-row flex-wrap justify-center items-center w-full mb-36">
                                     <input required type="email" onChange={(e) => { setEmail(e.target.value) }} className="from-input py-4 w-2/5 xs:w-full sm:w-2/5 xs:mx-5 sm:mx-0" placeholder="Email Address" />
-                                    <button className="bg-[#e50914] text-white px-4 xs:py-2 sm:py-4 xs:my-5 sm:my-0 xs:mx-auto sm:mx-0" disabled={buttonDisable}>
+                                    <button className="bg-[#e50914] text-white px-4 xs:py-2 sm:py-4 xs:my-5 sm:my-0 xs:mx-auto sm:mx-0">
                                         {buttonLoading ? <div className="animate-spin mx-auto w-5 h-5 border-2 border-sky-500 border-r-white rounded-full mx-auto "></div> : <div className='text-white'>Get Started &gt;</div>}
                                     </button>
                                 </form>

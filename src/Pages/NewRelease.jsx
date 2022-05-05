@@ -57,7 +57,7 @@ const NewRelease = () => {
                 <>
                     {selectedMovie && <Modal selectedMovie={selectedMovie} modal={modal} setModal={setModal} />}
                     <div className="box-border p-5">
-                        <h1>New Release</h1>
+                        <h1 className="text-4xl">New Release</h1>
                         <div className="flex flex-wrap justify-around">
                             {renderMovies()}
                         </div>

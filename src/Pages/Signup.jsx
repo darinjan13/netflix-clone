@@ -14,6 +14,8 @@ const Signin = () => {
     const reduxEmail = useSelector((state) => state.auth.email);
 
     const [email, setEmail] = useState('');
+    // eslint-disable-next-line
+    const [reload, setReload] = useState();
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -34,7 +36,6 @@ const Signin = () => {
             setEmail(reduxEmail)
         }
         if (user) {
-            console.log(user.uid);
             addDocToFirebase()
             navigate("/trending");
         }
@@ -46,9 +47,8 @@ const Signin = () => {
         setButtonDisable(true);
         try {
             await signUp(email, password);
-            navigate('/trending');
+            setReload("Reload");
         } catch (error) {
-            console.log(error)
             switch (error.code) {
                 case "auth/weak-password":
                     setErrorMessage("Password should be at least 6 characters.")
@@ -72,12 +72,12 @@ const Signin = () => {
     return (
         <div className="h-screen bg-bgImage bg-cover">
             <div className="h-full bg-gray-900/60">
-            <div className="flex flex-wrap xs:bg-black md:bg-gray-900/50 mb-10">
+            <div className="flex flex-wrap xs:bg-black md:bg-gray-900/50 lg:mb-10">
                     <a href="/">
                         <img className="h-10 xs:h-5 sm:h-10 my-6 mx-16 xs:mx-5 sm:mx-16" src={Logo} alt="Netflix" />
                     </a>
                 </div>
-                <div className="xs:h-full md:h-max xs:w-full md:w-[450px] bg-black xs:p-3 md:p-20 md:mx-auto">
+                <div className="xs:h-full lg:h-max xs:w-full lg:w-[450px] bg-black xs:p-3 md:p-20 md:mx-auto">
                     <form onSubmit={register} className="flex flex-col">
                         <h1 className="text-white text-4xl font-bold mb-5">Sign Up</h1>
                         <div className={`${error ? 'block' : 'hidden'} text-white text-sm bg-[#e87c03] rounded-lg py-2 px-3 mb-4`} role="alert">

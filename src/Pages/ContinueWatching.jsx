@@ -48,7 +48,7 @@ const ContinueWatching = () => {
 
     const renderEmpty = () => (
         <div className="flex h-screen items-center justify-center uppercase">
-            You didn't watch movies or tv series for now, go watch now.
+            You didn't watch movies or tv series yet, go watch now.
         </div>
     )
     return (
@@ -58,7 +58,7 @@ const ContinueWatching = () => {
                 <>
                     {selectedMovie && <Modal selectedMovie={selectedMovie} modal={modal} setModal={setModal} />}
                     <div className="box-border p-5">
-                        <h1>Continue Watching</h1>
+                        <h1 className="text-4xl">Continue Watching</h1>
                         <div className="flex flex-wrap justify-around">
                             {renderMovies()}
                         </div>

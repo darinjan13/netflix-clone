@@ -56,7 +56,7 @@ const Trending = () => {
                 <>
                     {selectedMovie && <Modal selectedMovie={selectedMovie} modal={modal} setModal={setModal} />}
                     <div className="box-border p-5">
-                        <h1>Trending Now</h1>
+                        <h1 className="text-4xl">Trending Now</h1>
                         <div className="flex flex-wrap justify-around">
                             {renderMovies()}
                         </div>

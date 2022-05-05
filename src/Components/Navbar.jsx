@@ -1,4 +1,4 @@
-import Logo from '../Assets/logo.svg'
+import Logo from '../assets/logo.svg'
 const Navbar = () => {
     return (
         <div className="border border-b-gray-300">

@@ -1,74 +1,70 @@
 // import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { userActions } from "../redux/userSlice"
-import { authActions } from "../redux/authSlice"
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // import YouTube, { YouTubeProps } from 'react-youtube'
+
+import { doc, updateDoc, arrayUnion } from "firebase/firestore"
+import { db } from "../firebase/firebase.config";
+import { fetchTrending, getTrending, getLoading } from "../redux/trendingSlice"
 
 import MovieCard from "../Components/MovieCard"
 import Modal from "../Components/Modal";
 import HomeNavbar from "../Components/HomeNavbar"
+import Footer from "../Components/Footer";
 
 const Trending = () => {
-
-    // const navigate = useNavigate();
     const dispatch = useDispatch();
-
-    const [search, setSearch] = useState(null);
+    const trending = useSelector(getTrending);
+    const loading = useSelector(getLoading)
+    const currentUser = JSON.parse(localStorage.getItem('user'));
     const [modal, setModal] = useState(false);
-
-    const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState({});
-    const [watched, setWatched] = useState([]);
 
-    const fetchMovies = async () => {
-        const { data: { results } } = await axios.get(`${process.env.REACT_APP_API_URL}/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
-        setMovies(results)
-    }
     useEffect(() => {
-        fetchMovies()
+        dispatch(fetchTrending())
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (Object.keys(selectedMovie).length !== 0) {
+            addToWatched();
+        }
         // eslint-disable-next-line
-    }, [movies]);
-
-    const addToWatched = (movie) => {
-        const newWatched = [...watched, movie]
-        // console.log(movie)
-        setWatched(newWatched)
-    }
-
-    // const renderMovies = () => (
-    //     movies.map((movie, index) => {
-    //         return <MovieCard key={index} movie={movie} arr={arr} setSelectedMovie={setSelectedMovie} setWatched={setWatched} modal={modal} setModal={setModal} />;
-    //     })
-    // )
-    function logout() {
-        dispatch(userActions.setEmail(''));
-        dispatch(userActions.setPassword(''));
-        dispatch(authActions.setLogin(false));
-    }
-    function asD() {
-        console.log(watched)
+    }, [selectedMovie])
+    const renderMovies = () => (
+        trending.map((movie, index) => {
+            return <MovieCard movies={movie} key={index} setSelectedMovie={setSelectedMovie} setModal={setModal} />
+        })
+    )
+    const addToWatched = async () => {
+        const continueWatching = doc(db, "continueWatching", currentUser.uid)
+        await updateDoc(continueWatching, {
+            results: arrayUnion(selectedMovie)
+        })
     }
 
     return (
-        <>
+        <div className="bg-gray-900/80 text-white">
             <HomeNavbar />
-            <button onClick={logout} >Logout</button>
-            <button onClick={asD} >ASD</button>
-            <input type="text" onChange={e => setSearch(e.target.value)} />
-            {search}
-            <Modal selectedMovie={selectedMovie} modal={modal} setModal={setModal} />
-            <div className="box-border p-5">
-                <h1>Trending</h1>
-                <div className="flex flex-wrap justify-around">
-                    {/* <div className="flex flex-row flex-wrap shrink-0 h-full w-full"> */}
-                    <MovieCard movies={movies} setSelectedMovie={setSelectedMovie} addToWatched={addToWatched} modal={modal} setModal={setModal} />
-                    {/* </div> */}
+            {loading === "Pending" && (
+                <div className="flex h-screen items-center justify-center">
+                    <div className="animate-spin w-40 h-40 border-8 border-sky-500 border-r-white rounded-full">
+                    </div>
                 </div>
-            </div>
-        </>
+            )}
+
+            {loading === "Fulfilled" && (
+                <>
+                    {selectedMovie && <Modal selectedMovie={selectedMovie} modal={modal} setModal={setModal} />}
+                    <div className="box-border p-5">
+                        <h1>Trending Now</h1>
+                        <div className="flex flex-wrap justify-around">
+                            {renderMovies()}
+                        </div>
+                    </div>
+                    <Footer />
+                </>
+            )}
+        </div>
     );
 }
 

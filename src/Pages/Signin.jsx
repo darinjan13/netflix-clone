@@ -48,7 +48,7 @@ const Signin = () => {
                         <img className="h-10 xs:h-5 sm:h-10 my-6 mx-16 xs:mx-5 sm:mx-16" src={Logo} alt="Netflix" />
                     </a>
                 </div>
-                <div className="xs:h-full lg:h-max xs:w-full lg:w-[450px] bg-black xs:p-3 md:p-20 md:mx-auto">
+                <div className="xs:h-full md:h-max xs:w-full md:w-[450px] bg-black xs:p-3 md:p-20 md:mx-auto">
                     <form onSubmit={login} className="flex flex-col">
                         <h1 className="text-white text-4xl font-bold mb-5">Sign In</h1>
                         <div className={`${error ? 'block' : 'hidden'} text-white text-sm bg-[#e87c03] rounded-lg py-2 px-3 mb-4`} role="alert">

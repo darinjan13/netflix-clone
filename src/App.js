@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
 
-import HomePage from "./pages/HomePage.jsx";
+// import HomePage from "./pages/HomePage.jsx";
 import Signin from "./pages/Signin.jsx";
 import Signup from "./pages/Signup.jsx";
 import Trending from './pages/Trending.jsx';
@@ -17,7 +17,7 @@ function App() {
   return (
         <UserAuthContextProvider>
           <Routes>
-            <Route exact path="/" element={ <HomePage /> } />
+            <Route exact path="/" element={ <Signin /> } />
             <Route exact path="/signin" element={ <Signin /> } />
             <Route exact path="/signup" element={ <Signup /> } />
             <Route exact path="/trending" element={

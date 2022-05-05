@@ -1,7 +1,7 @@
-import Logo from '../assets/logo.svg';
+import Logo from '../Assets/logo.svg';
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useUserAuth } from '../context/UserAuthContext';
+import { useUserAuth } from '../Context/UserAuthContext';
 
 const Signin = () => {
 

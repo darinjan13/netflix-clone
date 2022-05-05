@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Logo from '../assets/logo.svg'
+import Logo from '../Assets/logo.svg'
 import { useDispatch } from 'react-redux';
 import { authActions } from '../redux/authSlice'
 import Footer from '../Components/Footer';

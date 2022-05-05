@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import YouTube, { YouTubeProps } from 'react-youtube'
 
 import { doc, updateDoc, arrayUnion } from "firebase/firestore"
-import { db } from "../firebase/firebase.config";
+import { db } from "../Firebase/firebase.config";
 import { fetchTrending, getTrending, getLoading } from "../redux/trendingSlice"
 
 import MovieCard from "../Components/MovieCard"

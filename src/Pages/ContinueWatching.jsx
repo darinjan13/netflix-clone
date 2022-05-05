@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { doc, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase/firebase.config";
+import { db } from "../Firebase/firebase.config";
 
 import Modal from "../Components/Modal";
 import HomeNavbar from "../Components/HomeNavbar";

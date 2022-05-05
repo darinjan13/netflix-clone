@@ -5,7 +5,7 @@ import HomeNavbar from "../Components/HomeNavbar"
 import MovieCard from "../Components/MovieCard";
 import Modal from "../Components/Modal";
 import { fetchNewReleases, getNewReleases, getLoading } from "../redux/newReleasesSlice"
-import { db } from "../firebase/firebase.config";
+import { db } from "../Firebase/firebase.config";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import Footer from "../Components/Footer";
 

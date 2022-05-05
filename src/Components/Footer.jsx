@@ -1,4 +1,4 @@
-import MovieApiLogo from "../assets/movieapilogo.svg"
+import MovieApiLogo from "../Assets/movieapilogo.svg"
 
 const Footer = () => {
     return (

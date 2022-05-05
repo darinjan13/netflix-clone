@@ -1,16 +1,16 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
 
-import HomePage from "./pages/HomePage";
-import Signin from "./pages/Signin";
-import Signup from "./pages/Signup";
-import Trending from './pages/Trending';
-import NewRelease from './pages/NewRelease';
-import ContinueWatching from './pages/ContinueWatching';
+import HomePage from "./pages/HomePage.jsx";
+import Signin from "./pages/Signin.jsx";
+import Signup from "./pages/Signup.jsx";
+import Trending from './pages/Trending.jsx';
+import NewRelease from './pages/NewRelease.jsx';
+import ContinueWatching from './pages/ContinueWatching.jsx';
 
-import ProtectedRoutes from './Components/ProtectedRoutes'
-import NotFound from "./pages/NotFound";
-import { UserAuthContextProvider } from './context/UserAuthContext';
+import ProtectedRoutes from './Components/ProtectedRoutes.jsx'
+import NotFound from "./pages/NotFound.jsx";
+import { UserAuthContextProvider } from './context/UserAuthContext.js';
 
 function App() {
 

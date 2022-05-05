@@ -24,7 +24,6 @@ const HomePage = () => {
         if (user) {
             navigate("/trending");
         } else {
-            console.log(user)
             setLoading(true)
         }
         // eslint-disable-next-line

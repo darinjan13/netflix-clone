@@ -40,14 +40,13 @@ const Signin = () => {
         }
         // eslint-disable-next-line
     }, [user])
-    const buttonClick = () => {
-        setButtonLoading(true);
-        setButtonDisable(true);
-    }
     const register = async (e) => {
         e.preventDefault();
+        setButtonLoading(true);
+        setButtonDisable(true);
         try {
             await signUp(email, password);
+            navigate('/trending');
         } catch (error) {
             console.log(error)
             switch (error.code) {
@@ -78,7 +77,7 @@ const Signin = () => {
                         <img className="h-10 xs:h-5 sm:h-10 my-6 mx-16 xs:mx-5 sm:mx-16" src={Logo} alt="Netflix" />
                     </a>
                 </div>
-                <div className="xs:h-full md:h-max xs:w-full md:w-[450px] bg-black xs:p-3 md:p-20 md:mx-auto">
+                <div className="xs:h-full lg:h-max xs:w-full lg:w-[450px] bg-black xs:p-3 md:p-20 md:mx-auto">
                     <form onSubmit={register} className="flex flex-col">
                         <h1 className="text-white text-4xl font-bold mb-5">Sign Up</h1>
                         <div className={`${error ? 'block' : 'hidden'} text-white text-sm bg-[#e87c03] rounded-lg py-2 px-3 mb-4`} role="alert">
@@ -87,7 +86,7 @@ const Signin = () => {
                         </div>
                         <input defaultValue={reduxEmail} onChange={(e) => { setEmail(e.target.value) }} className="text-white rounded-lg bg-[#333] mb-5" type="email" placeholder="Email" required />
                         <input onChange={(e) => { setPassword(e.target.value) }} className="text-white rounded-lg bg-[#333] border-0 mb-10" type="password" placeholder="Password" required />
-                        <button onClick={buttonClick} className="text-white text-center font-bold bg-red-600 rounded-lg p-4" disabled={buttonDisable}>
+                        <button className="text-white text-center font-bold bg-red-600 rounded-lg p-4" disabled={buttonDisable}>
                             {buttonLoading ? <div className="animate-spin mx-auto w-5 h-5 border-2 border-sky-500 border-r-white rounded-full mx-auto "></div> : <div className='text-white'>Sign Up</div>}
                         </button>
                         <h1 className="text-white mt-2">Already have an acount? <Link className="underline" to="/signin">Log in here.</Link></h1>

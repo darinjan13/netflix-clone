@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
 
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/HomePage";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Trending from './pages/Trending';
 import NewRelease from './pages/NewRelease';
-import ContinueWatching from './pages/ContinueWatching'
+import ContinueWatching from './pages/ContinueWatching';
 
 import ProtectedRoutes from './Components/ProtectedRoutes'
 import NotFound from "./pages/NotFound";

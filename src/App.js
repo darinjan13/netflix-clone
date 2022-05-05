@@ -10,7 +10,7 @@ import ContinueWatching from './Pages/ContinueWatching.jsx';
 
 import ProtectedRoutes from './Components/ProtectedRoutes.jsx'
 import NotFound from "./Pages/NotFound.jsx";
-import { UserAuthContextProvider } from './Context/UserAuthContext.js';
+import { UserAuthContextProvider } from './context/UserAuthContext.js';
 
 function App() {
 

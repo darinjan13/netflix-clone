@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom"
 
 import Logo from '../Assets/logo.svg';
-import { useUserAuth } from "../Context/UserAuthContext";
+import { useUserAuth } from "../context/UserAuthContext";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../Firebase/firebase.config";
 import { useSelector } from "react-redux";

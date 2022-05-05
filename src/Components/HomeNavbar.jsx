@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth } from "../Firebase/firebase.config";
+import { auth } from "../firebase/firebase.config";
 import Logo from '../Assets/logo.svg'
 
 const HomeNavbar = () => {

@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom"
 import Logo from '../Assets/logo.svg';
 import { useUserAuth } from "../context/UserAuthContext";
 import { setDoc, doc } from "firebase/firestore";
-import { db } from "../Firebase/firebase.config";
+import { db } from "../firebase/firebase.config";
 import { useSelector } from "react-redux";
 
 const Signin = () => {

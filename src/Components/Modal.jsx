@@ -35,12 +35,13 @@ const Modal = ({ selectedMovie, modal, setModal }) => {
                         <div className="fixed inset-0 flex items-center justify-center">
                             <Dialog.Panel className=" h-[60%] w-[90%] rounded bg-white">
 
-                                <div className="relative h-full w-full bg-cover bg-center flex items-end " style={{ backgroundImage: `url(${process.env.REACT_APP_IMAGE_URL}/original${selectedMovie.backdrop_path})` }}>
+                                <div className="relative h-full w-full bg-cover bg-center grid items-end " style={{ backgroundImage: `url(${process.env.REACT_APP_IMAGE_URL}/original${selectedMovie.backdrop_path})` }}>
                                     <button className="absolute right-0 top-0 text-white" onClick={closeModal}>
                                         <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                     </button>
+                                    <button>Watch Trailer</button>
                                     <div className="bg-gray-900/70 text-white mx-auto p-5 pb-10">
                                         <h1 className="font-bold text-xl text-center mb-10">{selectedMovie.media_type === "movie" || selectedMovie.media_type === undefined ? selectedMovie.title : selectedMovie.original_name}</h1>
                                         {selectedMovie.overview}

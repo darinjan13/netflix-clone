@@ -13,11 +13,14 @@ const ContinueWatching = () => {
     const user = JSON.parse(localStorage.getItem('user'))
 
     const [continueWatching, setContinueWatching] = useState(null);
-    // eslint-disable-next-line
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [modal, setModal] = useState(true);
     const [loading, setLoading] = useState(false);
     const [empty, setEmpty] = useState(false);
+
+    useEffect(() => {
+        document.title = "Continue Watching"
+    }, [])
 
     useEffect(
         () => onSnapshot(doc(db, "continueWatching", user.uid), (doc) => {

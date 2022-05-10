@@ -21,6 +21,10 @@ const Trending = () => {
     const [selectedMovie, setSelectedMovie] = useState({});
 
     useEffect(() => {
+        document.title = "Trending"
+    }, [])
+
+    useEffect(() => {
         dispatch(fetchTrending())
     }, [dispatch]);
 
